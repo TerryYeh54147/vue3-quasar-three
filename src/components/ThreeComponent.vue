@@ -10,7 +10,7 @@ let scene = new THREE.Scene();
 let camera: PerspectiveCamera;
 let renderer: WebGLRenderer;
 let addItems = ref([{ label: 'cube', icon: 'view_in_ar' }]);
-let contorl = OrbitControls;
+let controls = OrbitControls;
 onMounted(() => {
   init();
 });
@@ -31,10 +31,10 @@ function init() {
   scene.add(grid);
 
   // test
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+  // const geometry = new THREE.BoxGeometry(1, 1, 1);
+  // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+  // const cube = new THREE.Mesh(geometry, material);
+  // scene.add(cube);
 
   renderer = new THREE.WebGLRenderer({
     canvas: canvasArea.value as unknown as HTMLCanvasElement,
@@ -42,7 +42,7 @@ function init() {
   });
   renderer.setSize(width, height);
   renderScene();
-  const controls = new OrbitControls(camera, renderer.domElement);
+  controls = new OrbitControls(camera, renderer.domElement);
   controls.addEventListener('change', renderScene);
   controls.update();
 
@@ -60,24 +60,25 @@ const onWindowResize = () => {
 const renderScene = () => {
   renderer.render(scene, camera);
 };
-// function addsceneElem(type: string) {
-//   if (type === 'cube') {
-//     const geometry = new THREE.BoxGeometry(1, 1, 1);
-//     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-//     const cube = new THREE.Mesh(geometry, material);
-//     scene.value.add(cube);
-//   }
-// }
+function addsceneElem(type: string) {
+  if (type === 'cube') {
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshNormalMaterial();
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+  }
+}
 </script>
 
 <template>
-  <!-- <q-btn-dropdown class="dropBtn" color="primary" icon="add" rounded>
+  <q-btn-dropdown class="dropBtn" color="primary" icon="add" rounded>
     <q-list>
       <q-item
         v-for="(item, i) in addItems"
         :key="`dropBtn${i}`"
         clickable
         v-close-popup
+        @click="addsceneElem(item.label)"
       >
         <q-item-section avatar>
           <q-avatar :icon="item.icon"></q-avatar>
@@ -87,7 +88,7 @@ const renderScene = () => {
         </q-item-section>
       </q-item>
     </q-list>
-  </q-btn-dropdown> -->
+  </q-btn-dropdown>
   <canvas ref="canvasArea"></canvas>
 </template>
 

@@ -39,9 +39,14 @@ import EssentialLink, {
 
 const essentialLinks: EssentialLinkProps[] = [
   {
-    title: 'Home',
-    icon: 'home',
-    link: '/',
+    title: 'ThreeJs',
+    icon: '3d_rotation',
+    to: '/treejs',
+  },
+  {
+    title: 'TresJs',
+    icon: 'view_in_ar',
+    to: '/',
   },
 ];
 
