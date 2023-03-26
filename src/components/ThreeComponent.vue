@@ -63,7 +63,7 @@ const renderScene = () => {
 function addsceneElem(type: string) {
   if (type === 'cube') {
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshNormalMaterial();
+    const material = new THREE.MeshLambertMaterial({ color: 'blue' });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
   }
