@@ -70,7 +70,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        APP_NAME: require('./package.json').productName,
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

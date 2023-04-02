@@ -1,21 +1,10 @@
 <template>
-  <q-layout view="hHh Lpr fFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title> Quasar App </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" bordered>
+  <q-layout view="lHh Lpr lFf ">
+    <q-drawer v-model="leftDrawerOpen" persistent show-if-above dark behavior="desktop" :width="200">
+      <q-list class="q-py-sm">
+        <q-toolbar-title class="text-center">{{ appName }}</q-toolbar-title>
+      </q-list>
+      <q-separator />
       <q-list>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -50,9 +39,6 @@ const essentialLinks: EssentialLinkProps[] = [
   },
 ];
 
-const leftDrawerOpen = ref(false);
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
+const leftDrawerOpen = ref(true);
+const appName = process.env.APP_NAME;
 </script>

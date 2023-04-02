@@ -1,8 +1,8 @@
 {
-  "name": "3d-practice-quasar",
+  "name": "3d-platform",
   "version": "0.0.1",
   "description": "practice three js with quasar",
-  "productName": "3d-practice",
+  "productName": "3D Platform",
   "author": "terry54147 <0930164@gmail.com>",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "@quasar/cli": "^2.0.0",
     "@quasar/extras": "^1.0.0",
+    "@types/lodash": "^4.14.192",
     "axios": "^0.21.1",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
